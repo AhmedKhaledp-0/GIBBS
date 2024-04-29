@@ -2,20 +2,18 @@ import numpy as np
 import math
 import os
 
-r1 = [-294.32, 4265.1, 5986.7 ]
-r2 = [-1365.5,3637.6, 6346.8 ]
-r3 = [-2940.3 , 2473.7,6555.8]
-
-# r1_input = input("Enter values for r1 separated by commas: ")
-# r1 = np.array([float(val.strip()) for val in r1_input.split(",")])
 
 
-# r2_input = input("Enter values for r2 separated by commas: ")
-# r2 = np.array([float(val.strip()) for val in r2_input.split(",")])
+r1_input = input("Enter values for r1 separated by commas: ")
+r1 = np.array([float(val.strip()) for val in r1_input.split(",")])
 
 
-# r3_input = input("Enter values for r3 separated by commas: ")
-# r3 = np.array([float(val.strip()) for val in r3_input.split(",")])
+r2_input = input("Enter values for r2 separated by commas: ")
+r2 = np.array([float(val.strip()) for val in r2_input.split(",")])
+
+
+r3_input = input("Enter values for r3 separated by commas: ")
+r3 = np.array([float(val.strip()) for val in r3_input.split(",")])
 
 r1Vector = np.array(r1)
 r2Vector = np.array(r2)
