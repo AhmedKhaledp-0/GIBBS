@@ -3,17 +3,19 @@ import math
 import os
 
 
-
-r1_input = input("Enter values for r1 separated by commas: ")
-r1 = np.array([float(val.strip()) for val in r1_input.split(",")])
-
-
-r2_input = input("Enter values for r2 separated by commas: ")
-r2 = np.array([float(val.strip()) for val in r2_input.split(",")])
+r1 = [-294.32, 4265.1, 5986.7 ]
+r2 = [-1365.5,3637.6, 6346.8 ]
+r3 = [-2940.3 , 2473.7,6555.8] 
+# r1_input = input("Enter values for r1 separated by commas: ")
+# r1 = np.array([float(val.strip()) for val in r1_input.split(",")])
 
 
-r3_input = input("Enter values for r3 separated by commas: ")
-r3 = np.array([float(val.strip()) for val in r3_input.split(",")])
+# r2_input = input("Enter values for r2 separated by commas: ")
+# r2 = np.array([float(val.strip()) for val in r2_input.split(",")])
+
+
+# r3_input = input("Enter values for r3 separated by commas: ")
+# r3 = np.array([float(val.strip()) for val in r3_input.split(",")])
 
 r1Vector = np.array(r1)
 r2Vector = np.array(r2)
@@ -189,7 +191,7 @@ def step_4():
 with open(f"equations/step_4.tex", "w") as f:
     step_4()
 
-v2Vector = ((math.sqrt(398600 / (theNMagnitude * theDMagnitude))) * ((np.cross(theD, r2Vector) / r2Magnitude) + theS))
+v2Vector = (math.sqrt(398600 / (theNMagnitude * theDMagnitude))) * ((np.cross(theD, r2Vector) / r2Magnitude) + theS)
 
 def step_5():
     f.write('\\\\')
@@ -203,3 +205,59 @@ def step_5():
 
 with open(f"equations/step_5.tex", "w") as f:
     step_5()
+
+# r = r2Vector
+# v = v2Vector
+
+
+# r_magnitude = r2Magnitude
+# v_magnitude = np.linalg.norm(v2Vector)
+r=np.array([-6045,-3490,2500])
+v=np.array([-3.457,6.618,2.533])
+
+r_magnitude = np.linalg.norm(r)
+v_magnitude = np.linalg.norm(v)
+
+print (r_magnitude)
+print (v_magnitude)
+
+radial_velocity = (r.dot(v)) / r_magnitude
+print (radial_velocity)
+if radial_velocity > 0:
+    print("The spacecraft is flying away from perigee")
+else:
+    print("The spacecraft is flying toward perigee.")
+specific_angular_momentum = np.cross(r, v)
+specific_angular_momentum_magnitude = np.linalg.norm(specific_angular_momentum)
+print (specific_angular_momentum_magnitude)
+i = math.acos(specific_angular_momentum[2]/specific_angular_momentum_magnitude) * (180.0 / math.pi)
+print (i)
+node_line_vector = np.cross((0,0,1),specific_angular_momentum)
+print (node_line_vector)
+node_line_magnitude = np.linalg.norm(node_line_vector)
+print (node_line_magnitude)
+if node_line_vector[1] >= 0:
+    right_ascension_of_the_ascending_node = math.acos(node_line_vector[0]/node_line_magnitude) * (180.0 / math.pi)
+else:
+    right_ascension_of_the_ascending_node =360 - (math.acos(node_line_vector[0]/node_line_magnitude)) * (180.0 / math.pi)
+print (right_ascension_of_the_ascending_node)
+eccentricity_vector = (1/398600)*((v_magnitude**2 - 398600/r_magnitude)*r - (r_magnitude*radial_velocity)*v)
+print (eccentricity_vector)
+eccentricity_magnitude = np.linalg.norm(eccentricity_vector)
+print (eccentricity_magnitude)
+if eccentricity_vector[2] >= 0:
+    right_ascension_of_the_ascending_node = math.acos(node_line_vector.dot(eccentricity_vector)/(node_line_magnitude*eccentricity_magnitude)) * (180.0 / math.pi)
+else:
+    right_ascension_of_the_ascending_node =360 - math.acos(node_line_vector.dot(eccentricity_vector)/(node_line_magnitude*eccentricity_magnitude)) * (180.0 / math.pi)
+print(right_ascension_of_the_ascending_node)
+if  radial_velocity >= 0:
+    true_anomaly = math.acos ((eccentricity_vector.dot(r))/(eccentricity_magnitude * r_magnitude)) * (180 / math.pi)
+else:
+        true_anomaly = 360 - (math.acos ((eccentricity_vector.dot(r))/(eccentricity_magnitude * r_magnitude)) * (180 / math.pi))
+print (true_anomaly)
+perigee_radii = (specific_angular_momentum_magnitude**2/398600)*(1/(1+eccentricity_magnitude * math.cos(0*math.pi /180)))
+print ((perigee_radii))
+apogee_radii = (specific_angular_momentum_magnitude**2/398600)*(1/(1+eccentricity_magnitude * math.cos(180*math.pi /180)))
+print (apogee_radii)
+semimajor_axis = (1/2) * (perigee_radii+apogee_radii)
+print (semimajor_axis)
