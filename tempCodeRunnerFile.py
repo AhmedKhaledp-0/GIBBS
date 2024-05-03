@@ -1,0 +1,6 @@
+r1_input = input("Enter values for r1 separated by commas: ")
+r1 = np.array([float(val.strip()) for val in r1_input.split(",")])
+r2_input = input("Enter values for r2 separated by commas: ")
+r2 = np.array([float(val.strip()) for val in r2_input.split(",")])
+r3_input = input("Enter values for r3 separated by commas: ")
+r3 = np.array([float(val.strip()) for val in r3_input.split(",")])
