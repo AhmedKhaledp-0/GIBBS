@@ -1,5 +1,6 @@
 import numpy as np
 import math
+
 # Input the 3 spacecraft position vectors
 r1 = [-294.32, 4265.1, 5986.7 ]
 r2 = [-1365.5,3637.6, 6346.8 ]
