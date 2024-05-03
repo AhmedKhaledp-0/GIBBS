@@ -1,6 +1,6 @@
 ## Cooding the algorithm of GIBBS method using PYTHON
 > supervisor : Dr . Ahmed badwy
-
+>
 > By : Ahmed khaled fathy
 
 ## Requirments 
@@ -15,13 +15,13 @@
 
 ## Example 
 > if you used the numpers on the refrenc algoritgm
-
+>
 > -294.32i + 4265.1j + 5956.7k
-
+>
 > -1365.5i + 3637.6j + 6346.8k
-
+>
 > -2940.3i + 2473.7j + 6555.8k
-
+.
 > you will get that pdf 
 
 
@@ -193,7 +193,9 @@ $$ \text{Since 0} > {i} < \text{ 90 , this is prograde orbit.} $$
 
 $\textbf{Step7}$ 
 
-$$ \vec{N} = \vec{\hat{K}} \times \vec{h} =  \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ 0 & 0 & 1 \\ 31280.88 & -37277.19 & 28095.03 \end{vmatrix} = 37277.19 \hat{i} + 31280.88 \hat{j} + -0.0 \hat{k} \texttt{ (Km$^2$/s)} $$
+$$ \vec{N} = \vec{\hat{K}} \times \vec{h} =  \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\
+ 0 & 0 & 1 \\
+  31280.88 & -37277.19 & 28095.03 \end{vmatrix} = 37277.19 \hat{i} + 31280.88 \hat{j} + -0.0 \hat{k} \texttt{ (Km$^2$/s)} $$
 
 $\textbf{Step8}$
 

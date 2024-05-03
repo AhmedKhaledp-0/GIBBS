@@ -267,7 +267,7 @@ def print_the_algorithm_by_latex():
         # Calculate the true anomaly
         f.write("\\textbf{Step13} \n"+'\n')
         if radial_velocity > 0:
-            f.write("$$\\text{We know that }{v}_r > \\text{ 0 , which means 0° } \\geq \\theta < \\text{ 180°. Therefore,}$$")
+            f.write("$$\\text{We know that }{v}_r > \\text{ 0 , which means 0} ^ \\circ \\geq \\theta < \\text{ 180} ^ \\circ {. Therefore,}$$")
         f.write(f"$$ {{\\theta}} = \\cosinv{{\\frac{{\\vec{{e}}.\\vec{{r}}}}{{e r}}}} = \\cosinv{{\\left[\\frac{{ ({round(eccentricity_vector[0],2)}) ({round(r[0],2)}) + ({round(eccentricity_vector[1],2)}) ({round(r[1],2)}) + ({round(eccentricity_vector[2],2)}) ({round(r[2],2)}) }}{{({round(eccentricity_magnitude,2)})({round(r_magnitude,2)})}}\\right]}} \\Rightarrow  {round(true_anomaly,2)}^ \\circ $$ \n" +'\n')
         
         # Calculate the semi major axis
