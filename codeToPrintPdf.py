@@ -236,7 +236,10 @@ def print_the_algorithm_by_latex():
         # Calculate the right ascension of the ascending node
         f.write("\\textbf{Step9} \n"+'\n')
         if node_line_vector[1] < 0:
-            f.write("$$\\text{we know that }{N}_Y < \\text{ 0 ; therefore } \\Omega \\text{ must lie in the third quadrant}$$")
+            f.write("$$\\text{we know that }{N}_Y < \\text{ 0 ; therefore } \\Omega \\text{ must lie in the third or foruth quadrant}$$")
+        else:
+            f.write("$$\\text{we know that }{N}_Y \\geq  \\text{ 0 ; therefore } \\Omega \\text{ must lie in the first or second quadrant}$$")
+
         f.write(f"$$ {{\\Omega}} = \\cosinv{{\\frac{{{{N}}_x}}{{N}}}} = \\cosinv{{\\left(\\frac{{{round(node_line_vector[1],2)}}}{{{round(node_line_magnitude,2)}}}\\right)}} \\Rightarrow  {round(right_ascension_of_the_ascending_node,2)}^ \\circ $$ \n" +'\n')
 
         # Calculate the eccentricity vector & magnitude
@@ -260,14 +263,20 @@ def print_the_algorithm_by_latex():
 
         # Calculate the argument of perigee
         f.write("\\textbf{Step12} \n"+'\n')
-        if eccentricity_vector[2] > 0:
-            f.write("$$\\text{We know that }{e}_z > \\text{ 0 ; therefore } \\omega \\text{ must lie in the first quadrant}$$")
+        if eccentricity_vector[2] >= 0:
+            f.write("$$\\text{We know that }{e}_z \\geq  \\text{ 0 ; therefore } \\omega \\text{ must lie in the first or second quadrant}$$")
+        else:
+            f.write("$$\\text{We know that }{e}_z <  \\text{ 0 ; therefore } \\omega \\text{ must lie in the third or fourth quadrant}$$")
+        
         f.write(f"$$ {{\\omega}} = \\cosinv{{\\frac{{\\vec{{N}}.\\vec{{e}}}}{{N e}}}} = \\cosinv{{\\left[\\frac{{ ({round(node_line_vector[0],2)}) ({round(eccentricity_vector[0],2)}) + ({round(node_line_vector[1],2)}) ({round(eccentricity_vector[1],2)}) + ({round(node_line_vector[2],2)}) ({round(eccentricity_vector[2],2)}) }}{{({round(node_line_magnitude,2)})({round(eccentricity_magnitude,2)})}}\\right]}} \\Rightarrow  {round(argument_of_perigee,2)}^ \\circ $$ \n" +'\n')
 
         # Calculate the true anomaly
         f.write("\\textbf{Step13} \n"+'\n')
-        if radial_velocity > 0:
-            f.write("$$\\text{We know that }{v}_r > \\text{ 0 , which means 0} ^ \\circ \\geq \\theta < \\text{ 180} ^ \\circ {. Therefore,}$$")
+        if radial_velocity >= 0:
+            f.write("$$\\text{We know that }{v}_r \\geq  \\text{ 0 , which means 0} ^ \\circ \\geq \\theta < \\text{ 180} ^ \\circ {. Therefore,}$$")
+        else:
+            f.write("$$\\text{We know that }{v}_r <  \\text{ 0 , which means 180} ^ \\circ \\geq \\theta < \\text{ 360} ^ \\circ {. Therefore,}$$")
+        
         f.write(f"$$ {{\\theta}} = \\cosinv{{\\frac{{\\vec{{e}}.\\vec{{r}}}}{{e r}}}} = \\cosinv{{\\left[\\frac{{ ({round(eccentricity_vector[0],2)}) ({round(r[0],2)}) + ({round(eccentricity_vector[1],2)}) ({round(r[1],2)}) + ({round(eccentricity_vector[2],2)}) ({round(r[2],2)}) }}{{({round(eccentricity_magnitude,2)})({round(r_magnitude,2)})}}\\right]}} \\Rightarrow  {round(true_anomaly,2)}^ \\circ $$ \n" +'\n')
         
         # Calculate the semi major axis
